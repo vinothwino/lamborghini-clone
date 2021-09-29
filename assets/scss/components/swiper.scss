@@ -1,0 +1,304 @@
+@import "swiper/swiper.scss";
+@import "swiper/components/navigation/navigation.scss";
+@import "swiper/components/pagination/pagination.scss";
+@import "swiper/components/scrollbar/scrollbar.scss";
+@import "swiper/components/effect-fade/effect-fade.scss";
+
+.product-swiper {
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    .swiper-container {
+        height: 100%;
+        // height: calc(100vh - 94px);
+        .swiper-wrapper {
+            .swiper-slide {
+                height: 100%;
+                .bg-image {
+                    &,
+                    & img {
+                        position: absolute;
+                        inset: 0;
+                    }
+                    img {
+                        width: 0;
+                        height: 0;
+                        min-width: 100%;
+                        min-height: 100%;
+                        max-width: 100%;
+                        max-height: 100%;
+                        object-fit: cover;
+                        object-position: 50% 50%;
+                    }
+                }
+                .slide-overlay {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    background-image: radial-gradient(at 85% 10%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 100%);
+                    position: absolute;
+                    inset: 0px;
+                    z-index: 10;
+                    height: 100%;
+                    background-color: transparent;
+                    @include media-breakpoint-down("lg") {
+                        align-items: flex-start;
+                    }
+                    @include media-breakpoint-up("xs") {
+                        padding: 0 20px;
+                    }
+                    .content {
+                        // padding: 22vh 0px 0px;
+                        color: white;
+                        .content-wrapper {
+                            display: inline-block;
+                        }
+                        .product-name {
+                            @include media-breakpoint-up("xs") {
+                                font-weight: normal;
+                                font-size: 1.8rem;
+                                line-height: 1.33;
+                                letter-spacing: 1.62px;
+                            }
+                            @include media-breakpoint-up("lg") {
+                                font-size: 2.5rem;
+                            }
+                            @include media-breakpoint-up("xxl") {
+                                font-size: 3.5rem;
+                                font-weight: 500;
+                                letter-spacing: 1.36px;
+                            }
+                        }
+                        .product-desc {
+                            @include media-breakpoint-up("xs") {
+                                font-weight: 700;
+                                font-size: 4rem;
+                                line-height: 1.08em;
+                                letter-spacing: -1.5px;
+                                margin-left: -2px;
+                                opacity: 0;
+                            }
+                            @include media-breakpoint-up("lg") {
+                                font-size: 8rem;
+                            }
+                            @include media-breakpoint-up("xxl") {
+                                font-size: 11rem;
+                                line-height: 0.9;
+                                letter-spacing: -3.48px;
+                                margin-left: -3.48px;
+                            }
+                        }
+                        a {
+                            width: 60px;
+                            display: inline-block;
+                            margin-top: 20px;
+                            svg.exagon {
+                                cursor: pointer;
+                                &:hover {
+                                    .background {
+                                        fill: #fff;
+                                        stroke: transparent;
+                                    }
+                                    .foreground {
+                                        fill: none;
+                                        stroke: black;
+                                    }
+                                }
+                                .background {
+                                    fill: transparent;
+                                    stroke: #fff;
+                                    transition: fill 0.3s ease-out;
+                                }
+                                .foreground {
+                                    stroke: #fff;
+                                    fill: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .swiper-pagination {
+            text-align: left;
+            position: absolute;
+            bottom: 60px;
+            left: 8.1%;
+            width: 50%;
+            @include media-breakpoint-down("lg") {
+                left: 0;
+                text-align: center;
+                width: 100%;
+                bottom: 20px;
+            }
+            &-bullet {
+                width: 54px;
+                height: 3px;
+                padding-top: 10px;
+                background: transparent;
+                border-radius: 0px;
+                position: relative;
+                &:first-child {
+                    margin-left: 0px;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 1.5px;
+                    background: white;
+                    opacity: 0.6;
+                }
+                &-active::after {
+                    opacity: 1;
+                    height: 2.5px;
+                }
+            }
+        }
+    }
+}
+
+.custom-model-slider {
+    position: relative;
+    height: 100vh;
+    min-height: 680px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    .inner-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 25%;
+        color: white;
+        z-index: 1;
+        display: inline-flex;
+        .controls,
+        .active-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            h5,
+            h1 {
+                text-transform: uppercase;
+            }
+        }
+        .controls {
+            flex: 0 0 29%;
+        }
+        .active-content {
+            flex: 0 0 50%;
+            & > *:first-child {
+                margin-bottom: 60px;
+            }
+            .explore-text {
+                font-size: 1.55rem;
+                line-height: 2.4rem;
+                letter-spacing: 0.05rem;
+                margin-bottom: 0px;
+                font-weight: 300;
+            }
+        }
+    }
+    .slides {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        .slide {
+            display: inline-block;
+            height: 100%;
+            width: 29.2vw;
+            will-change: width;
+            background: transparent;
+            -webkit-transition: width 0.5s ease-out;
+            transition: width 0.5s ease-out;
+            .skew {
+                position: relative;
+                transform: skew(-20deg);
+                transform-origin: bottom left;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                .skew-fix {
+                    position: relative;
+                    transform: skew(20deg);
+                    height: 100%;
+                    width: 236%;
+                    transform-origin: bottom left;
+                    background-position: center center;
+                    background-size: cover;
+                    background-color: black;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        background-position: center center;
+                        background-size: cover;
+                        background-color: rgba(0, 0, 0, 0.75);
+                        opacity: 1;
+                    }
+                    img {
+                        max-width: unset;
+                        width: auto;
+                        height: 100%;
+                        position: absolute;
+                        left: 25% !important;
+                        -webkit-transform: translateX(-50%);
+                        -moz-transform: translateX(-50%);
+                        -ms-transform: translateX(-50%);
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+            &.active {
+                width: 60vw;
+                .skew .skew-fix::after {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+.model-choose-swiper {
+    position: relative;
+    padding-top: 14rem;
+    padding-bottom: 6rem;
+    white-space: nowrap;
+    .overlay {
+        min-height: 50rem;
+        h5,
+        h2 {
+            text-transform: uppercase;
+        }
+        h2 {
+            line-height: 8rem;
+            text-transform: uppercase;
+            font-size: 7.6rem;
+        }
+        h5 {
+            font-size: 2.5rem;
+        }
+    }
+    .swiper-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+}

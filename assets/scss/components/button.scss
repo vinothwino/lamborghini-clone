@@ -1,0 +1,139 @@
+a.diagonal-btn {
+    width: 60px;
+    &.light {
+        svg.exagon {
+            cursor: pointer;
+            &:hover {
+                .background {
+                    fill: #fff;
+                    stroke: transparent;
+                }
+                .foreground {
+                    fill: none;
+                    stroke: black;
+                }
+            }
+            .background {
+                fill: transparent;
+                stroke: #fff;
+                transition: fill 0.3s ease-out;
+            }
+            .foreground {
+                stroke: #fff;
+                fill: none;
+            }
+        }
+    }
+    &.dark {
+        svg.exagon {
+            cursor: pointer;
+            &:hover {
+                .background {
+                    fill: #000;
+                    stroke: transparent;
+                }
+                .foreground {
+                    fill: none;
+                    stroke: white;
+                }
+            }
+            .background {
+                fill: transparent;
+                stroke: #000;
+                transition: fill 0.3s ease-out;
+            }
+            .foreground {
+                stroke: #000;
+                fill: none;
+            }
+        }
+    }
+}
+
+.custom-tab {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    display: inline-flex;
+    button {
+        position: relative;
+        font-size: 1.6rem;
+        background: white;
+        box-shadow: 0 0 0 #fff;
+        outline: 0;
+        border: 0;
+        color: rgba(32, 32, 32, 0.3);
+        text-align: left;
+        letter-spacing: 0.03rem;
+        line-height: 1;
+        padding: 0 6.5rem 2rem 0;
+        transition: all 0.3s ease-out;
+        &::after {
+            content: "";
+            width: 0;
+            left: 0;
+            bottom: -0.1rem;
+            position: absolute;
+            height: 0.2rem;
+            background-color: black;
+            transition: all 0.3s ease-out;
+        }
+        &:hover:not(.active),
+        &.active {
+            color: black;
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.custom-btn {
+    &-link {
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        border-radius: 0;
+        font-size: 1.4rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.3;
+        letter-spacing: 0.126rem;
+        text-align: left;
+        transition: 0.3s background-color ease-in-out, 0.3s color ease-in-out;
+        &.theme-light {
+            background-color: #f8f8f7;
+            color: #202020;
+            &:hover {
+                background-color: #202020;
+                color: #fff;
+            }
+        }
+    }
+    &-outline {
+        padding: 1.5rem;
+        text-align: center;
+        width: 100%;
+        min-width: 21.5rem;
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        font-weight: 400;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.31;
+        letter-spacing: 0.064rem;
+        display: inline-block;
+        -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        width: auto;
+        border-radius: 0;
+        &.theme-light {
+            color: #202020;
+            border: 1px solid #cbcbca;
+            &:hover {
+                color: #fff;
+                background-color: #181818;
+            }
+        }
+    }
+}

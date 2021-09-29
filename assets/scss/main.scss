@@ -1,0 +1,41 @@
+// 1. Configuration and helpers
+@import "abstracts/functions", "abstracts/mixins";
+
+// 2. Base configuration
+@import "base/reset", "base/typography", "base/utillity";
+
+// 3. Vendors
+@import "vendors/vendors";
+
+// 4. Layouts
+@import "layout/all";
+
+@import "components/components";
+
+@import "pages/page";
+
+#text-animation {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    background-color: #000;
+    margin: auto;
+    overflow: hidden;
+    color: white;
+    h3 {
+        position: absolute;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        visibility: hidden;
+        font-size: 120px;
+        top: 65px;
+    }
+    // h2 {
+    //     color:#9af600;
+    //     margin-left:24px;
+    //     margin-bottom:0px;
+    //   }
+}

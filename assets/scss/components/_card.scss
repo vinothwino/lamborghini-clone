@@ -1,0 +1,43 @@
+.news-card {
+    margin-bottom: 5rem;
+    .card-content {
+        padding-left: 4rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        img {
+            min-height: 26rem;
+        }
+        .heading,
+        time {
+            text-transform: uppercase;
+        }
+        .heading {
+            font-size: 3.2rem;
+            font-weight: 600;
+        }
+        time {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            font-weight: 300;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: 0.14rem;
+            color: #202020;
+        }
+        .detail {
+            margin: auto;
+        }
+        .btn {
+            align-self: flex-start;
+        }
+        @include media-breakpoint-down("md") {
+            padding-left: 0;
+            padding-top: 4rem;
+            .detail {
+                margin: 4rem 0;
+            }
+        }
+    }
+}

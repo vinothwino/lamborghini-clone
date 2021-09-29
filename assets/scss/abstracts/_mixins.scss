@@ -1,0 +1,42 @@
+@mixin add-navigation-link {
+    ul {
+        display: inline-flex;
+        list-style: none;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 0px;
+        padding: 0;
+        li {
+            a {
+                color: white;
+                text-transform: uppercase;
+                font-weight: 300;
+                font-size: 1.6rem;
+                @include media-breakpoint-down(xxl) {
+                    font-size: 1.3rem;
+                    &:not(:last-child) {
+                        margin-right: 2.9rem;
+                    }
+                }
+                position: relative;
+                text-decoration: none;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -0.5rem;
+                    height: 0.1rem;
+                    background-color: white;
+                    width: 0;
+                    transition: all 0.3s ease-in-out;
+                }
+                &:hover::after {
+                    width: 100%;
+                }
+            }
+            &:not(:last-child) {
+                margin-right: 2.6rem;
+            }
+        }
+    }
+}

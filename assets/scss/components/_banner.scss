@@ -1,0 +1,35 @@
+.news-list-banner {
+    .heading,
+    .sub-heading {
+        text-transform: uppercase;
+    }
+    .banner-img {
+        width: 100%;
+        margin-bottom: 4rem;
+    }
+    .banner-detail {
+        .banner-date {
+            time {
+                text-transform: uppercase;
+                font-size: 1.8rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+            }
+            button {
+                margin-bottom: 0.8rem;
+            }
+        }
+        .banner-content {
+            margin-top: 2rem;
+            .heading {
+                font-size: 3.2rem;
+                font-weight: 600;
+            }
+            .desc {
+                font-size: 1.7rem;
+                font-weight: 300;
+                line-height: 2.9rem;
+            }
+        }
+    }
+}
