@@ -1,0 +1,18 @@
+$primary: #181818;
+$font-family-base: "Roboto", sans-serif;
+$link-color: white;
+$link-hover-color: white;
+$link-hover-decoration: none;
+// Create your own map
+$custom-colors: (
+    "transparent": transparent,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+$h1-font-size: 11rem;
+$h2-font-size: 9.5rem;
+$h3-font-size: 5rem;
+$h4-font-size: 4.5rem;
+$h5-font-size: 3.5rem;
+$h6-font-size: 1.5rem;

@@ -1,0 +1,17 @@
+@for $i from 1 through 9 {
+    .fw-#{$i*100} {
+        font-weight: $i * 100 !important;
+    }
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.visibility-visible {
+    visibility: visible;
+}
+
+.f-sm {
+    font-size: 1.2rem;
+}
