@@ -4,12 +4,12 @@ import CarImage1 from 'assets/images/jpg/models/Urus.jpg'
 import CarImage3 from 'assets/images/jpg/models/ultimae_coupe.jpg'
 import gsap from 'gsap'
 import DiagonalButton from 'components/Button/DiagonalButton'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const all = dynamic(import('gsap/all'), { ssr: false })
 
 let totalModels = [
     {
-        modelName: 'HURACÁN',
+        modelName: 'AVENDER',
         modelText: 'based on true story',
         image: CarImage,
         index: 0
@@ -21,7 +21,7 @@ let totalModels = [
         index: 1
     },
     {
-        modelName: 'HURACÁN',
+        modelName: 'URUS',
         modelText: 'based on true story',
         image: CarImage3,
         index: 2
@@ -30,38 +30,67 @@ let totalModels = [
 
 const Model = () => {
     const [models, setModels] = useState([...totalModels])
+    const isNavigating = useRef(false)
+    const gsapRef = useRef(gsap.timeline())
+
     useEffect(() => {
-        animate()
-    }, [models])
+        const listContainer = document.getElementById('models-list');
+        listContainer.childNodes[totalModels.length - 1].classList.add('active')
+    }, [])
     const navigate = (isNext = false) => {
-        let cloneModels = [...models]
+        if (isNavigating.current) return
+        const listContainer = document.getElementById('models-list');
+        let firstElementIndex = listContainer.childNodes[0].getAttribute("data-item")
+        let prevElementIndex = listContainer.childNodes[totalModels.length - 2].getAttribute("data-item")
+        animate(totalModels[isNext ? firstElementIndex : prevElementIndex].modelName)
         if (isNext) {
-            let temp = cloneModels[2]
-            cloneModels[2] = cloneModels[1]
-            cloneModels[1] = cloneModels[0]
-            cloneModels[0] = temp
-            cloneModels[3] = temp
+            let lastElement = listContainer.childNodes[totalModels.length - 1].cloneNode(true)
+            lastElement.classList.remove('active')
+            let firstElement = listContainer.childNodes[0]
+            listContainer.insertBefore(lastElement, firstElement)
+            listContainer.childNodes[totalModels.length - 1].classList.add('active')
+            listContainer.childNodes[totalModels.length].classList.remove('active')
+            isNavigating.current = true
+            setTimeout(() => {
+                listContainer.removeChild(listContainer.childNodes[totalModels.length])
+                isNavigating.current = false
+            }, 500)
         }
         else {
-            let temp = cloneModels[2]
-            cloneModels[2] = cloneModels[1]
-            cloneModels[1] = cloneModels[0]
-            cloneModels[0] = temp
+            let firstElement = listContainer.childNodes[0].cloneNode(true)
+            firstElement.classList.add('active')
+            listContainer.appendChild(firstElement)
+            isNavigating.current = true
+            setTimeout(() => {
+                listContainer.childNodes[totalModels.length - 1].classList.remove('active')
+            }, 50)
+            setTimeout(() => {
+                listContainer.removeChild(listContainer.childNodes[0])
+                isNavigating.current = false
+            }, 550)
         }
-        setModels(cloneModels)
     }
-    const animate = () => {
-        const listContainer = document.getElementById('model-section')
-        const totalList = listContainer.querySelectorAll("[data-item]")
-        const activeIndex = listContainer.getElementsByClassName('slide active').length
-            ? listContainer.getElementsByClassName('slide active')[0].getAttribute("data-item")
-            : -1
-        if (activeIndex > -1) {
-            totalList[2].classList.toggle('active')
-            setTimeout(() => totalList[2].classList.toggle('active'), 500)
-        } else {
-            totalList[2].classList.toggle('active')
+    const animate = async (modelName) => {
+        let plugin = await all.render.preload()
+        gsap.registerPlugin(plugin.TextPlugin, plugin.EasePack.ExpoScaleEase);
+        let t1 = gsapRef.current
+        t1.clear()
+        t1.set('#model-section .product-desc,#model-section .product-model', { xPercent: -100, autoAlpha: 0 })
+        let words = modelName
+        let wordCount = words.split('').length
+        var container = document.querySelector('#model-section .product-name')
+        container.innerHTML = ''
+        for (let i = 0; i < wordCount; i++) {
+            let word = words[i];
+            let element = document.createElement('span')
+            let textEl = document.createTextNode(word)
+            element.appendChild(textEl)
+            container.appendChild(element)
         }
+        t1.set('#model-section .product-name span', { autoAlpha: 0 })
+        t1.to('#model-section .product-name span', { stagger: .1, autoAlpha: 1, duration: .3, ease: "Sine.easeOut" }, '>.8')
+        t1.to('#model-section .product-desc', { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, '<')
+        t1.to('#model-section .product-model', { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, '<.5')
     }
     return (
         <section id="model-section">
@@ -87,8 +116,8 @@ const Model = () => {
                         </div>
                         <div className="active-content">
                             <div>
-                                <h1 className="mb-2 fw-600">HURACÁN</h1>
-                                <h5>based on true story</h5>
+                                <h1 className="mb-2 fw-600 product-name" data-text="HURACÁN">HURACÁN</h1>
+                                <h5 className="product-desc">based on true story</h5>
                             </div>
                             <div className="d-flex align-items-center">
                                 <DiagonalButton
