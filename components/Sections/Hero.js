@@ -7,11 +7,15 @@ import CarImage1 from 'assets/images/jpg/social_homepage_28_12.jpg'
 import gsap from 'gsap'
 import DiagonalButton from 'components/Button/DiagonalButton'
 import { Row, Col } from 'react-bootstrap';
+import { useEffect } from 'react';
 const all = dynamic(import('gsap/all'), { ssr: false })
 
 SwiperCore.use([Navigation, Pagination, EffectFade]);
 
 const Hero = () => {
+    useEffect(() => {
+        animate()
+    }, [])
     const animate = async (isSlided = false) => {
         let plugin = await all.render.preload()
         gsap.registerPlugin(plugin.TextPlugin, plugin.EasePack.ExpoScaleEase);
@@ -44,12 +48,7 @@ const Hero = () => {
                     slidesPerView={1}
                     effect={'fade'}
                     speed={1000}
-                    // onSlideChange={(e) => animate()}
                     onActiveIndexChange={(...props) => animate(true)}
-                    onSwiper={e => {
-                        console.log(e)
-                        animate()
-                    }}
                     scrollbar={{ draggable: true }}
                     pagination={{ clickable: true }}
                 >
