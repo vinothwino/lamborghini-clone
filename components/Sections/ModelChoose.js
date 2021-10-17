@@ -56,7 +56,7 @@ const ModelChoose = () => {
         t1.to('#model-choose .product-model', { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, '<.5')
     }
     return (
-        <section id="model-choose">
+        <section id="model-choose" className="d-none d-xl-block">
             <div className="model-choose-swiper">
                 <div className="overlay col-5 offset-1">
                     <div className="active-content mb-5">

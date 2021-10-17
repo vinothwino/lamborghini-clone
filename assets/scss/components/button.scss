@@ -135,5 +135,14 @@ a.diagonal-btn {
                 background-color: #181818;
             }
         }
+        &.theme-dark {
+            color: white;
+            background-color: #181818;
+            &:hover {
+                color: #202020;
+                background-color: white;
+                border: 1px solid #181818;
+            }
+        }
     }
 }

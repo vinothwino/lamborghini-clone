@@ -1,37 +1,51 @@
 import dynamic from 'next/dynamic'
-import CarImage from 'assets/images/jpg/models/Huracan.jpg'
-import CarImage1 from 'assets/images/jpg/models/Urus.jpg'
-import CarImage3 from 'assets/images/jpg/models/ultimae_coupe.jpg'
+import CarImage from 'assets/images/jpg/models/Urus.jpg'
+import CarImage1 from 'assets/images/jpg/models/Aventador.jpg'
+import CarImage2 from 'assets/images/jpg/models/Huracan.jpg'
+import CarImageSmall from 'assets/images/jpg/models/Urus-mobile.jpg'
+import CarImageSmall1 from 'assets/images/jpg/models/Aventador-mobile.jpg'
+import CarImageSmall2 from 'assets/images/jpg/models/Huracan-mobile.jpg'
 import gsap from 'gsap'
 import DiagonalButton from 'components/Button/DiagonalButton'
+import OutlineButton from 'components/Button/OutlineButton'
 import { useEffect, useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { EffectFade, Navigation } from 'swiper';
 const all = dynamic(import('gsap/all'), { ssr: false })
+SwiperCore.use([Navigation, EffectFade]);
+
 
 let totalModels = [
     {
-        modelName: 'AVENDER',
+        modelName: 'URUS',
         modelText: 'based on true story',
         image: CarImage,
+        imageSmall: CarImageSmall,
+        index: 2
+    },
+    {
+        modelName: 'AVENDER',
+        modelText: 'based on true story',
+        image: CarImage1,
+        imageSmall: CarImageSmall1,
         index: 0
     },
     {
         modelName: 'HURACÁN',
         modelText: 'based on true story',
-        image: CarImage1,
+        image: CarImage2,
+        imageSmall: CarImageSmall2,
         index: 1
     },
-    {
-        modelName: 'URUS',
-        modelText: 'based on true story',
-        image: CarImage3,
-        index: 2
-    }
+
 ]
 
 const Model = () => {
     const [models, setModels] = useState([...totalModels])
     const isNavigating = useRef(false)
     const gsapRef = useRef(gsap.timeline())
+    const swiperRef = useRef()
+    const mobileSwiperRef = useRef()
 
     useEffect(() => {
         const listContainer = document.getElementById('models-list');
@@ -70,16 +84,22 @@ const Model = () => {
             }, 550)
         }
     }
-    const animate = async (modelName) => {
+
+    const animate = async (modelName, isSmallDevice = false) => {
         let plugin = await all.render.preload()
         gsap.registerPlugin(plugin.TextPlugin, plugin.EasePack.ExpoScaleEase);
         let t1 = gsapRef.current
         t1.clear()
-        t1.set('#model-section .product-desc,#model-section .product-model', { xPercent: -100, autoAlpha: 0 })
-        let words = modelName
+        const modelDetails = models.find(data => data.modelName === modelName)
+        if (!modelDetails) return;
+        t1.set(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-desc,#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-model`, { xPercent: -100, autoAlpha: 0 })
+        let words = modelDetails.modelName
         let wordCount = words.split('').length
-        var container = document.querySelector('#model-section .product-name')
+        var container = document.querySelector(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-name`)
         container.innerHTML = ''
+        var productDesc = document.querySelector(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-desc`)
+        productDesc.innerHTML = ''
+        productDesc.innerHTML = modelDetails.modelText
         for (let i = 0; i < wordCount; i++) {
             let word = words[i];
             let element = document.createElement('span')
@@ -87,15 +107,20 @@ const Model = () => {
             element.appendChild(textEl)
             container.appendChild(element)
         }
-        t1.set('#model-section .product-name span', { autoAlpha: 0 })
-        t1.to('#model-section .product-name span', { stagger: .1, autoAlpha: 1, duration: .3, ease: "Sine.easeOut" }, '>.8')
-        t1.to('#model-section .product-desc', { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, '<')
-        t1.to('#model-section .product-model', { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, '<.5')
+        t1.set(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-name span`, { autoAlpha: 0 })
+        t1.to(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-name span`, { stagger: .1, autoAlpha: 1, duration: .3, ease: "Sine.easeOut" }, `>.8`)
+        t1.to(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-desc`, { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, `<`)
+        t1.to(`#model-section ${isSmallDevice ? ".small-device-wrapper" : ""} .product-model`, { xPercent: 0, autoAlpha: 1, duration: .8, ease: "Expo.easeOut" }, `<.5`)
     }
+
+    const handleAnimateSmallDevice = (activeIndex, props) => {
+        animate(models[activeIndex].modelName, true)
+    }
+
     return (
         <section id="model-section">
             <div className="model-section-container">
-                <div className="custom-model-slider container-fluid">
+                <div className="custom-model-slider container-fluid d-none d-xl-block">
                     <div className="inner-wrapper col-5 offset-1">
                         <div className="controls">
                             <h5 className="mb-5">models</h5>
@@ -152,8 +177,59 @@ const Model = () => {
                         }
                     </div>
                 </div>
+                <div className="container-fluid p-0 small-device-wrapper d-block d-xl-none">
+                    <div className="">
+                        <h5 className="mb-5 heading">models</h5>
+                        <Swiper
+                            ref={mobileSwiperRef}
+                            className="model-small-device-swiper"
+                            slidesPerView={2}
+                            grabCursor={true}
+                            loop={true}
+                            // breakpoints={{
+                            //     "769": {
+                            //         "slidesPerView": 2,
+                            //         "slidesPerGroup": 2
+                            //     }
+                            // }}
+                            onActiveIndexChange={(...props) => handleAnimateSmallDevice(props[0].realIndex, props)}
+                        >
+                            {
+                                models.map((model, index) => (
+                                    <SwiperSlide key={index}>
+                                        <div className="bg-image">
+                                            <img src={model.imageSmall} className="img-fluid background" />
+                                        </div>
+                                    </SwiperSlide>
+                                ))
+                            }
+                        </Swiper>
+                        <div className="active-content">
+                            <div>
+                                <h5 className="mb-2 fw-600 product-name" data-text="HURACÁN">HURACÁN</h5>
+                                <p className="product-desc">based on true story</p>
+                            </div>
+                            <div className="d-flex align-items-center model-button-container">
+                                <OutlineButton
+                                    width="5rem"
+                                    height="5rem"
+                                    iconName="plus"
+                                >
+                                    Explore the models
+                                </OutlineButton>
+                                <OutlineButton
+                                    width="5rem"
+                                    height="5rem"
+                                    iconName="plus"
+                                >
+                                    open car configurator
+                                </OutlineButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </section >
     );
 }
 

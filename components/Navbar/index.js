@@ -7,6 +7,7 @@ import gsap from 'gsap'
 
 const Navbar = () => {
     const [selectedNav, setSelectedNav] = useState()
+    const [showBurgerContainer, toggleBurgerContainer] = useState(false)
     const timeline = useRef(gsap.timeline())
     useEffect(() => {
         document.getElementById('models-container').addEventListener('mousemove', (event) => {
@@ -47,11 +48,11 @@ const Navbar = () => {
             t1.to(element, { yPercent: -100, height: '0px', duration: 0, delay: 0 })
         })
 
-        // window.addEventListener('resize', (event) => {
-        //     resizeAnimation()
-        // })
+        window.addEventListener('resize', (event) => {
+            resizeAnimation()
+        })
 
-        // resizeAnimation()
+        resizeAnimation()
 
     }, [])
 
@@ -60,7 +61,7 @@ const Navbar = () => {
         const maskElement = document.getElementById('navbar-mask')
         const modelElement = document.getElementById('models-container')
         const hamburger = document.getElementById('hamburger')
-        if (navbarElement.getAttribute('data-toggle-view') === 'settings' || true) {
+        if (navbarElement.getAttribute('data-toggle-view') === 'settings') {
             maskElement.style.left = modelElement.offsetLeft + 'px'
             maskElement.style.width = hamburger.offsetLeft - modelElement.offsetLeft + 'px'
         }
@@ -68,7 +69,6 @@ const Navbar = () => {
             maskElement.style.left = modelElement.offsetLeft + 'px'
             maskElement.style.width = '100%'
         }
-        maskElement.classList.add("show")
     })
     return (
         <header id="header" className="fixed-top">
@@ -108,16 +108,27 @@ const Navbar = () => {
                     <Button variant="transparent">
                         <i className="icon-search"></i>
                     </Button>
-                    <Button id="hamburger" variant="transparent" className="custom-burger bg-transparent">
+                    <Button
+                        id="hamburger"
+                        variant="transparent"
+                        className={`custom-burger bg-transparent ${showBurgerContainer && 'active'}`}
+                        onClick={() => toggleBurgerContainer(!showBurgerContainer)}
+                    >
                         <div></div>
                         <div></div>
                         <div></div>
                     </Button>
                 </div>
-                {/* <div id="navbar-mask" className="overlay-mask"></div> */}
+                <div
+                    id="navbar-mask"
+                    className={`overlay-mask ${showBurgerContainer && 'show'}`}>
+                </div>
             </nav>
             <CollapsiveContainer selectedNav={selectedNav} />
-            {/* <BurgerCollapsiveContainer /> */}
+            <BurgerCollapsiveContainer
+                show={showBurgerContainer}
+                toggle={() => toggleBurgerContainer(!showBurgerContainer)}
+            />
         </header>
     );
 }

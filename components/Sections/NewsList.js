@@ -3,6 +3,7 @@ import { Row, Col, Container } from 'react-bootstrap'
 import NewsBanner from 'components/Banner/News'
 import NewsCard from 'components/Card/NewsCard';
 import NewImg from 'assets/images/jpg/news/factory_cover.jpg'
+import OutlineButton from 'components/Button/OutlineButton'
 
 const NewsList = () => {
     return (
@@ -24,6 +25,11 @@ const NewsList = () => {
                                 edition="limited series"
                                 heading="Get ready to live the past with Lamborghini"
                             />
+                        </div>
+                        <div className="text-center text-uppercase news-all">
+                            <OutlineButton theme="dark">
+                                see all
+                            </OutlineButton>
                         </div>
                     </Col>
                 </Row>

@@ -57,7 +57,7 @@ const Hero = () => {
                             <img src={CarImage} className="img-fluid background" />
                         </div>
                         <Row className="slide-overlay mx-0">
-                            <Col xl="6" lg="7" sm="12" className="content offset-sm-1">
+                            <Col xl="6" lg="7" sm="12" className="content offset-lg-1">
                                 <div className="content-wrapper">
                                     <h5 className="product-name" data-text="AVENDATOR"></h5>
                                     <h1 className="product-desc">

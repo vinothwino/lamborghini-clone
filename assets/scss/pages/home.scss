@@ -1,6 +1,9 @@
 #banner {
-    min-height: 63rem;
     position: relative;
+    min-height: 63rem;
+    @include media-breakpoint-down(lg) {
+        min-height: 48rem;
+    }
     img {
         position: absolute;
         left: 0;
@@ -16,16 +19,103 @@
         transform: translateY(-50%);
         color: white;
         text-transform: uppercase;
+        @include media-breakpoint-down(lg) {
+            padding: 0 20px;
+        }
         h2 {
             font-size: 7.2rem;
+            @include media-breakpoint-down(lg) {
+                font-size: 3.2rem;
+            }
+        }
+        h5 {
+            @include media-breakpoint-down(lg) {
+                font-size: 1.9rem;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+#model-section {
+    .small-device-wrapper {
+        padding: 4rem 0 !important;
+        .heading {
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            padding: 2rem;
+        }
+        .active-content {
+            padding: 2rem;
+            .product-name {
+                font-size: 4rem;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.25;
+                letter-spacing: 0.04rem;
+                color: #202020;
+                text-transform: uppercase;
+            }
+            .product-desc {
+                font-size: 1.9rem;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.32;
+                letter-spacing: normal;
+                color: #202020;
+                text-transform: uppercase;
+            }
+            .model-button-container {
+                @include media-breakpoint-up(lg) {
+                    & > *:first-child {
+                        margin-right: 1.2rem;
+                    }
+                }
+                @include media-breakpoint-down(lg) {
+                    flex-wrap: wrap;
+                    & > * {
+                        width: 100%;
+                        margin-top: 1.4rem;
+                    }
+                }
+            }
         }
     }
 }
 
 #news-list {
     padding: 7rem 0;
-    .news-list {
-        padding-top: 4rem;
+    @include media-breakpoint-down(lg) {
+        .container {
+            padding-left: 4rem;
+            padding-right: 4rem;
+            max-width: 100%;
+        }
+        h5 {
+            font-size: 2.8rem;
+            letter-spacing: 0.162rem;
+        }
+        h2 {
+            font-size: 5rem;
+            font-weight: bold;
+            line-height: 1.08;
+            letter-spacing: -0.15rem;
+        }
+        .news-list {
+            padding-top: 4rem;
+        }
+        p,
+        .news-list .btn,
+        .news-list-banner .btn {
+            display: none;
+        }
+        .news-all {
+            .btn {
+                width: 100%;
+            }
+        }
     }
 }
 
