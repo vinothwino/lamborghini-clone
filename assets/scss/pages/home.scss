@@ -122,11 +122,24 @@
 footer {
     background-color: #181818;
     padding: 6rem 0 7rem 0;
+    .container-fluid {
+        padding-left: 20px;
+        padding-bottom: 20px;
+    }
+    .footer-fixed-emission {
+        font-size: 1.6rem;
+        font-size: 400 !important;
+        padding-left: 20px;
+        padding-bottom: 20px;
+    }
     .nav-link-container {
         @include add-navigation-link();
         a {
             font-weight: 400 !important;
         }
+    }
+    .socio-links {
+        @include add-navigation-link("no");
     }
     @include media-breakpoint-down(xl) {
         .web-links {

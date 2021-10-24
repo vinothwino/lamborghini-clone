@@ -1,4 +1,4 @@
-@mixin add-navigation-link {
+@mixin add-navigation-link($add-hover-effect: "yes") {
     ul {
         display: inline-flex;
         list-style: none;
@@ -20,18 +20,20 @@
                 }
                 position: relative;
                 text-decoration: none;
-                &::after {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    bottom: -0.5rem;
-                    height: 0.1rem;
-                    background-color: white;
-                    width: 0;
-                    transition: all 0.3s ease-in-out;
-                }
-                &:hover::after {
-                    width: 100%;
+                @if $add-hover-effect == "yes" {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: -0.5rem;
+                        height: 0.1rem;
+                        background-color: white;
+                        width: 0;
+                        transition: all 0.3s ease-in-out;
+                    }
+                    &:hover::after {
+                        width: 100%;
+                    }
                 }
             }
             &:not(:last-child) {

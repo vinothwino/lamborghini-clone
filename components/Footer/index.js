@@ -18,7 +18,7 @@ const Footer = () => {
                                 <li><a href="#">newsletter</a></li>
                             </ul>
                         </Col>
-                        <Col md="auto" className="nav-link-container socio-links order-3 order-xl-1">
+                        <Col md="auto" className="socio-links order-3 order-xl-1">
                             <ul>
                                 <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i className="fab fa-twitter"></i></a></li>
