@@ -128,14 +128,108 @@ const BurgerCollapsiveContainer = ({ show, toggle }) => {
                 <Container fluid className="p-0 position-relative h-100 d-xl-none d-xxl-none">
                     <Col md="12" className="mx-auto h-100">
                         <div className="mobile-main-content">
-                            <ul>
-                                <li>
-                                    <span>
-                                        models
-                                    </span>
-                                    <i className="icon-chevron-right"></i>
-                                </li>
-                            </ul>
+                            <div className="">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <span>
+                                                models
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                custom solutions
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                ownership
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                motorsport
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                dealership
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                musleum
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                store
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                design
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                innovation & excellence
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                driving programs
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                lounge
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                club
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                history
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                history
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <span>
+                                                models
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                custom solutions
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                ownership
+                                            </span>
+                                            <i className="icon-chevron-right"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div className="actions">
                                 <div className="d-flex align-items-end">
                                     <div className="flex-fill">
