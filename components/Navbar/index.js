@@ -63,7 +63,7 @@ const Navbar = () => {
         const hamburger = document.getElementById('hamburger')
         if (navbarElement.getAttribute('data-toggle-view') === 'settings') {
             maskElement.style.left = modelElement.offsetLeft + modelElement.offsetWidth + 'px'
-            maskElement.style.width = hamburger.offsetLeft - (modelElement.offsetLeft + modelElement.offsetWidth) + 'px'
+            maskElement.style.width = hamburger.offsetLeft - (modelElement.offsetLeft + modelElement.offsetWidth + 10) + 'px'
         }
         else {
             maskElement.style.left = modelElement.offsetLeft + 'px'

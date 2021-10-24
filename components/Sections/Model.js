@@ -77,11 +77,11 @@ const Model = () => {
             isNavigating.current = true
             setTimeout(() => {
                 listContainer.childNodes[totalModels.length - 1].classList.remove('active')
-            }, 50)
+            }, 60)
             setTimeout(() => {
                 listContainer.removeChild(listContainer.childNodes[0])
                 isNavigating.current = false
-            }, 550)
+            }, 500)
         }
     }
 
