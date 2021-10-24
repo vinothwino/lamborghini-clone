@@ -1,7 +1,83 @@
-import React from 'react';
+import DiagonalButton from 'components/Button/DiagonalButton';
+import React, { useEffect, useState } from 'react';
 import { Container, Col, Row, Button } from 'react-bootstrap'
 
+let mobileLinks = [
+    {
+        linkName: 'models',
+        arrowRight: true
+    },
+    {
+        linkName: 'custom solutions',
+        arrowRight: true
+    },
+    {
+        linkName: 'ownership',
+        arrowRight: true
+    },
+    {
+        linkName: 'motorsport',
+        arrowRight: true
+    },
+    {
+        linkName: 'dealership'
+    },
+    {
+        linkName: 'museum'
+    },
+    {
+        linkName: 'store'
+    },
+    {
+        linkName: 'design'
+    },
+    {
+        linkName: 'innovation & excellence'
+    },
+    {
+        linkName: 'driving programs'
+    },
+    {
+        linkName: 'lounge'
+    },
+    {
+        linkName: 'club'
+    },
+    {
+        linkName: 'history'
+    },
+    {
+        linkName: 'masterpieces'
+    },
+    {
+        linkName: 'people'
+    },
+    {
+        linkName: 'news'
+    }
+]
+
 const BurgerCollapsiveContainer = ({ show, toggle }) => {
+
+    const [showRightLink, setRightLink] = useState(false)
+    const [rootFontSize, setFontSize] = useState(10)
+
+    useEffect(() => {
+        document.getElementsByTagName("html")[0].style.fontSize = `${rootFontSize}px`
+    }, [rootFontSize])
+
+    const toggleRightContent = (data) => {
+        if (data.arrowRight)
+            setRightLink(!showRightLink)
+    }
+
+    const handleFontSize = (increase = true) => {
+        if (increase)
+            setFontSize(size => size + 1)
+        else
+            setFontSize(size => size - 1)
+    }
+
     return (
         <>
             <div id="burger-container" className={`burger-container collapse-details ${show && "show"}`}>
@@ -111,10 +187,18 @@ const BurgerCollapsiveContainer = ({ show, toggle }) => {
                                         <div className="d-flex align-items-center footer-btn-group">
                                             <span>text size</span>
                                             <div>
-                                                <Button variant="transparent  shadow-none bg-transparent">
+                                                <Button
+                                                    variant="transparent  shadow-none bg-transparent"
+                                                    onClick={() => handleFontSize(false)}
+                                                    disabled={rootFontSize === 10}
+                                                >
                                                     <i class="fas fa-minus"></i>
                                                 </Button>
-                                                <Button variant="transparent shadow-none  bg-transparent">
+                                                <Button
+                                                    variant="transparent shadow-none  bg-transparent"
+                                                    onClick={() => handleFontSize(true)}
+                                                    disabled={rootFontSize >= 13}
+                                                >
                                                     <i class="fas fa-plus"></i>
                                                 </Button>
                                             </div>
@@ -128,86 +212,61 @@ const BurgerCollapsiveContainer = ({ show, toggle }) => {
                 <Container fluid className="p-0 position-relative h-100 d-xl-none d-xxl-none">
                     <Col md="12" className="mx-auto h-100">
                         <div className="mobile-main-content">
-                            <div className="">
-                                <div>
+                            <div className={`nav-container ${showRightLink ? "active" : ""}`}>
+                                <div className={`left nav-list`}>
                                     <ul>
-                                        <li>
-                                            <span>
-                                                models
-                                            </span>
-                                            <i className="icon-chevron-right"></i>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                custom solutions
-                                            </span>
-                                            <i className="icon-chevron-right"></i>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                ownership
-                                            </span>
-                                            <i className="icon-chevron-right"></i>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                motorsport
-                                            </span>
-                                            <i className="icon-chevron-right"></i>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                dealership
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                musleum
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                store
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                design
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                innovation & excellence
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                driving programs
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                lounge
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                club
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                history
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                history
-                                            </span>
-                                        </li>
+                                        {
+                                            mobileLinks.map((data, index) => (
+                                                <li
+                                                    key={index}
+                                                    onClick={() => toggleRightContent(data)}
+                                                >
+                                                    <span>
+                                                        {
+                                                            data.linkName
+                                                        }
+                                                    </span>
+                                                    {
+                                                        data.arrowRight && (
+                                                            <i className="icon-chevron-right"></i>
+                                                        )
+                                                    }
+                                                </li>
+                                            ))
+                                        }
                                     </ul>
+                                    <div className="d-flex align-items-center footer-btn-group">
+                                        <span>text size</span>
+                                        <div>
+                                            <Button
+                                                variant="transparent  shadow-none bg-transparent"
+                                                onClick={() => handleFontSize(false)}
+                                                disabled={rootFontSize === 10}
+                                            >
+                                                <i class="fas fa-minus"></i>
+                                            </Button>
+                                            <Button
+                                                variant="transparent shadow-none  bg-transparent"
+                                                onClick={() => handleFontSize(true)}
+                                                disabled={rootFontSize >= 13}
+                                            >
+                                                <i class="fas fa-plus"></i>
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
+                                <div className="right nav-list">
+                                    <h5 className="back-btn" onClick={() => setRightLink(false)}>
+                                        <DiagonalButton
+                                            iconName="left-arrow"
+                                            width="30px"
+                                            height="30px"
+                                            className="inline"
+                                        />
+                                        <span className="d-block ps-3">
+                                            Back
+                                        </span>
+                                    </h5>
                                     <ul>
                                         <li>
                                             <span>
@@ -231,15 +290,32 @@ const BurgerCollapsiveContainer = ({ show, toggle }) => {
                                 </div>
                             </div>
                             <div className="actions">
-                                <div className="d-flex align-items-end">
+                                <div className="d-flex align-items-end action-container">
                                     <div className="flex-fill">
-                                        {/* <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <span>models</span>
-                                                </a>
-                                            </li>
-                                        </ul> */}
+                                        <h5 onClick={() => setRightLink(false)}>
+                                            <DiagonalButton
+                                                iconName="left-arrow"
+                                                width="30px"
+                                                height="30px"
+                                                className="inline"
+                                            />
+                                            <span className="d-block ps-3">
+                                                English
+                                            </span>
+                                        </h5>
+                                    </div>
+                                    <div className="flex-fill">
+                                        <h5 onClick={() => setRightLink(false)}>
+                                            <DiagonalButton
+                                                iconName="left-arrow"
+                                                width="30px"
+                                                height="30px"
+                                                className="inline"
+                                            />
+                                            <span className="d-block ps-3">
+                                                social
+                                            </span>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>

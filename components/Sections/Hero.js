@@ -16,6 +16,11 @@ const Hero = () => {
     useEffect(() => {
         animate()
     }, [])
+    const init = () => {
+        setTimeout(() => {
+            document.getElementsByClassName("product-swiper")[0].classList.add("active")
+        }, 500)
+    }
     const animate = async (isSlided = false) => {
         let plugin = await all.render.preload()
         gsap.registerPlugin(plugin.TextPlugin, plugin.EasePack.ExpoScaleEase);
@@ -51,6 +56,7 @@ const Hero = () => {
                     onActiveIndexChange={(...props) => animate(true)}
                     scrollbar={{ draggable: true }}
                     pagination={{ clickable: true }}
+                    onInit={() => init()}
                 >
                     <SwiperSlide>
                         <div className="bg-image">
@@ -85,6 +91,7 @@ const Hero = () => {
                         </Row>
                     </SwiperSlide>
                 </Swiper>
+                <div className="product-backdrop"></div>
             </div>
         </section>
     );

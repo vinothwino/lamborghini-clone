@@ -1,5 +1,7 @@
 a.diagonal-btn {
-    width: 60px;
+    &:not(.inline) {
+        width: 60px;
+    }
     &.light {
         svg.exagon {
             cursor: pointer;
@@ -144,5 +146,12 @@ a.diagonal-btn {
                 border: 1px solid #181818;
             }
         }
+    }
+}
+
+.btn {
+    &.disabled,
+    &:disabled {
+        opacity: 0.35 !important;
     }
 }

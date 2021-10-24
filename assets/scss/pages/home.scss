@@ -131,6 +131,7 @@ footer {
         font-size: 400 !important;
         padding-left: 20px;
         padding-bottom: 20px;
+        z-index: 1;
     }
     .nav-link-container {
         @include add-navigation-link();

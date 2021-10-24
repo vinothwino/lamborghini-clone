@@ -59,11 +59,11 @@ const Navbar = () => {
     const resizeAnimation = useCallback(() => {
         const navbarElement = document.getElementById('navbar')
         const maskElement = document.getElementById('navbar-mask')
-        const modelElement = document.getElementById('models-container')
+        const modelElement = document.getElementById('mask-left')
         const hamburger = document.getElementById('hamburger')
         if (navbarElement.getAttribute('data-toggle-view') === 'settings') {
-            maskElement.style.left = modelElement.offsetLeft + 'px'
-            maskElement.style.width = hamburger.offsetLeft - modelElement.offsetLeft + 'px'
+            maskElement.style.left = modelElement.offsetLeft + modelElement.offsetWidth + 'px'
+            maskElement.style.width = hamburger.offsetLeft - (modelElement.offsetLeft + modelElement.offsetWidth) + 'px'
         }
         else {
             maskElement.style.left = modelElement.offsetLeft + 'px'
@@ -73,7 +73,7 @@ const Navbar = () => {
     return (
         <header id="header" className="fixed-top">
             <nav id="navbar" data-toggle-view="settings">
-                <a href="#" className="brand">
+                <a id="mask-left" href="#" className="brand">
                     <img src={LOGO} alt="LOGO" />
                 </a>
                 <ul id="models-container">

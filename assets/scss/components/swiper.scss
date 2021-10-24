@@ -8,6 +8,23 @@
     width: 100%;
     height: 100vh;
     min-height: 650px;
+    position: relative;
+    .product-backdrop {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #181818;
+        transition: all 0.5s ease-in;
+        z-index: 1;
+    }
+    &.active {
+        .product-backdrop {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
     @include media-breakpoint-down("lg") {
         max-height: 718px;
     }

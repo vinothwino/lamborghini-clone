@@ -425,6 +425,87 @@ header {
                 }
             }
             .mobile-main-content {
+                max-height: calc(100vh - 60px) !important;
+                overflow: auto;
+                overflow-x: hidden;
+                .footer-btn-group {
+                    span {
+                        font-size: 1.7rem;
+                        text-transform: uppercase;
+                        color: #909090;
+                        margin-right: auto;
+                    }
+                    .btn {
+                        &:not(:last-child) {
+                            margin-right: 2.5rem;
+                        }
+                        & > i {
+                            font-weight: 300;
+                            font-size: 2rem;
+                        }
+                    }
+                }
+                .nav-container {
+                    width: 200%;
+                    display: flex;
+                    transition: transform 0.3s ease-in;
+                    padding-bottom: 6rem;
+                    &.active {
+                        transform: translateX(-50%);
+                    }
+                    .left,
+                    .right {
+                        width: 50%;
+                        .back-btn {
+                            font-size: 1.9rem;
+                            font-weight: 400;
+                            margin-bottom: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                    .nav-list {
+                        padding: 2.5rem 3.2rem 2rem 3.2rem;
+                        font-size: 2.4rem;
+                        text-transform: uppercase;
+                        list-style: none;
+                        letter-spacing: 0.1rem;
+                        ul {
+                            padding: 0;
+                            li {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin-bottom: 1.3rem;
+                                i {
+                                    font-size: 1.8rem;
+                                }
+                            }
+                        }
+                    }
+                    & > *:first-child ul {
+                        padding-top: 4.5rem;
+                    }
+                }
+                .actions {
+                    padding: 1.5rem 3.2rem 1.5rem 3.2rem;
+                    position: fixed;
+                    bottom: 0;
+                    z-index: 1;
+                    left: 0;
+                    background-color: #181818;
+                    width: 100%;
+                    .action-container {
+                        h5 {
+                            font-size: 2rem;
+                            font-weight: 500;
+                            margin-bottom: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
             }
             & + .backdrop {
                 position: fixed;
