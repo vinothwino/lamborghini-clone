@@ -76,7 +76,9 @@ const BurgerCollapsiveContainer = ({ show, toggle, resizeAnimation }) => {
             setFontSize(size => size + 1)
         else
             setFontSize(size => size - 1)
-        resizeAnimation()
+        setTimeout(() => {
+            resizeAnimation()
+        }, 100)
     }
 
     return (

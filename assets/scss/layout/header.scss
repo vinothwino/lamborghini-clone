@@ -1,5 +1,8 @@
 header {
-    position: relative;
+    & > {
+        position: relative;
+        overflow: hidden;
+    }
     nav {
         background-color: $primary;
         height: 9.4rem; //94px

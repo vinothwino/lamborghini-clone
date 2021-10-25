@@ -90,34 +90,36 @@ const Navbar = () => {
                         <a href="#" data-target="motorsport">motorsport</a>
                     </li>
                 </ul>
-                <ul className="ms-auto">
-                    <li>
-                        <a href="#">dealerships</a>
-                    </li>
-                    <li>
-                        <a href="#">museum</a>
-                    </li>
-                    <li>
-                        <a href="#">store</a>
-                    </li>
-                </ul>
-                <div className="button-group d-flex justify-content-start align-items-center">
-                    <Button variant="transparent">
-                        <i className="icon-chat"></i>
-                    </Button>
-                    <Button variant="transparent">
-                        <i className="icon-search"></i>
-                    </Button>
-                    <Button
-                        id="hamburger"
-                        variant="transparent"
-                        className={`custom-burger bg-transparent ${showBurgerContainer && 'active'}`}
-                        onClick={() => toggleBurgerContainer(!showBurgerContainer)}
-                    >
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </Button>
+                <div className="ms-auto d-flex">
+                    <ul className="d-none d-xl-flex">
+                        <li>
+                            <a href="#">dealerships</a>
+                        </li>
+                        <li>
+                            <a href="#">museum</a>
+                        </li>
+                        <li>
+                            <a href="#">store</a>
+                        </li>
+                    </ul>
+                    <div className="button-group d-flex justify-content-start align-items-center">
+                        <Button variant="transparent">
+                            <i className="icon-chat"></i>
+                        </Button>
+                        <Button variant="transparent">
+                            <i className="icon-search"></i>
+                        </Button>
+                        <Button
+                            id="hamburger"
+                            variant="transparent"
+                            className={`custom-burger bg-transparent ${showBurgerContainer && 'active'}`}
+                            onClick={() => toggleBurgerContainer(!showBurgerContainer)}
+                        >
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </Button>
+                    </div>
                 </div>
                 <div
                     id="navbar-mask"
