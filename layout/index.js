@@ -3,10 +3,10 @@ import Navbar from 'components/Navbar'
 
 const Layout = (props) => {
     return (
-        <header>
+        <div className="main-wrapper">
             <Navbar />
             {props.children}
-        </header>
+        </div>
     );
 }
 
