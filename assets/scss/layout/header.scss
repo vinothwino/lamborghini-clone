@@ -448,7 +448,7 @@ header {
                 .nav-container {
                     width: 200%;
                     display: flex;
-                    transition: transform 0.3s ease-in;
+                    transition: transform 0.35s ease-in-out;
                     padding-bottom: 6rem;
                     &.active {
                         transform: translateX(-50%);
