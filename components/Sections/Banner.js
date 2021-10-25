@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <section id="banner">
       <img src={BannerImg} />
-      <div className="overlay col-lg-5 col-md-12 offset-lg-1">
+      <div className="overlay col-xl-5 col-lg-12 offset-lg-1">
         <div className="active-content mb-5">
           <div>
             <h5>dealer locator</h5>

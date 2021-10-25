@@ -20,7 +20,7 @@ header {
             }
             margin-right: 5.2rem;
         }
-        @include media-breakpoint-down(xl) {
+        @include media-breakpoint-down(lg) {
             padding: 0.7rem 2.5rem;
             height: 60px;
             & > .brand {

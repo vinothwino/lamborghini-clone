@@ -204,6 +204,9 @@
         color: white;
         z-index: 1;
         display: inline-flex;
+        @include media-breakpoint-down(xl) {
+            margin-left: 4.333% !important;
+        }
         .controls,
         .active-content {
             display: flex;
@@ -212,6 +215,13 @@
             h5,
             h1 {
                 text-transform: uppercase;
+            }
+            h1 {
+                font-size: 11rem !important;
+                letter-spacing: -0.228rem;
+            }
+            h5 {
+                font-size: 3.5rem !important;
             }
         }
         .controls {
@@ -330,6 +340,9 @@
     white-space: nowrap;
     .overlay {
         min-height: 50rem;
+        @include media-breakpoint-down(xl) {
+            min-height: 35rem;
+        }
         h5,
         h2 {
             text-transform: uppercase;

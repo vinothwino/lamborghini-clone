@@ -57,7 +57,7 @@ let mobileLinks = [
     }
 ]
 
-const BurgerCollapsiveContainer = ({ show, toggle }) => {
+const BurgerCollapsiveContainer = ({ show, toggle, resizeAnimation }) => {
 
     const [showRightLink, setRightLink] = useState(false)
     const [rootFontSize, setFontSize] = useState(10)
@@ -76,12 +76,13 @@ const BurgerCollapsiveContainer = ({ show, toggle }) => {
             setFontSize(size => size + 1)
         else
             setFontSize(size => size - 1)
+        resizeAnimation()
     }
 
     return (
         <>
             <div id="burger-container" className={`burger-container collapse-details ${show && "show"}`}>
-                <Container fluid className="p-0 position-relative h-100 d-none d-xl-block">
+                <Container fluid className="p-0 position-relative h-100 d-none d-lg-block">
                     <Col md="12" className="mx-auto h-100">
                         <div className="main-content">
                             <Row className="gx-0 body">
@@ -209,7 +210,7 @@ const BurgerCollapsiveContainer = ({ show, toggle }) => {
                         </div>
                     </Col>
                 </Container>
-                <Container fluid className="p-0 position-relative h-100 d-xl-none d-xxl-none">
+                <Container fluid className="p-0 position-relative h-100 d-lg-none d-xl-none d-xxl-none">
                     <Col md="12" className="mx-auto h-100">
                         <div className="mobile-main-content">
                             <div className={`nav-container ${showRightLink ? "active" : ""}`}>

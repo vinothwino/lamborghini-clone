@@ -120,7 +120,7 @@ const Model = () => {
     return (
         <section id="model-section">
             <div className="model-section-container">
-                <div className="custom-model-slider container-fluid d-none d-xl-block">
+                <div className="custom-model-slider container-fluid d-none d-lg-block">
                     <div className="inner-wrapper col-5 offset-1">
                         <div className="controls">
                             <h5 className="mb-5">models</h5>
@@ -177,7 +177,7 @@ const Model = () => {
                         }
                     </div>
                 </div>
-                <div className="container-fluid p-0 small-device-wrapper d-block d-xl-none">
+                <div className="container-fluid p-0 small-device-wrapper d-block d-xl-none d-lg-none">
                     <div className="">
                         <h5 className="mb-5 heading">models</h5>
                         <Swiper

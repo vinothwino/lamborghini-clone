@@ -87,7 +87,7 @@
 
 #news-list {
     padding: 7rem 0;
-    @include media-breakpoint-down(lg) {
+    @include media-breakpoint-down(xl) {
         .container {
             padding-left: 4rem;
             padding-right: 4rem;
@@ -106,6 +106,8 @@
         .news-list {
             padding-top: 4rem;
         }
+    }
+    @include media-breakpoint-down(lg) {
         p,
         .news-list .btn,
         .news-list-banner .btn {
