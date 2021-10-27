@@ -49,7 +49,7 @@ const Navbar = () => {
         })
 
         window.addEventListener('resize', (event) => {
-            resizeAnimation()
+            setTimeout(resizeAnimation, 250)
         })
 
         resizeAnimation()
@@ -63,7 +63,7 @@ const Navbar = () => {
         const hamburger = document.getElementById('hamburger')
         if (navbarElement.getAttribute('data-toggle-view') === 'settings') {
             maskElement.style.left = modelElement.offsetLeft + modelElement.offsetWidth + 'px'
-            maskElement.style.width = hamburger.offsetLeft - (modelElement.offsetLeft + modelElement.offsetWidth + 15) + 'px'
+            maskElement.style.width = hamburger.offsetLeft - (modelElement.offsetLeft + modelElement.offsetWidth) + 'px'
         }
         else {
             maskElement.style.left = modelElement.offsetLeft + 'px'
