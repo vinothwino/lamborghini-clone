@@ -6,6 +6,7 @@ const Layout = (props) => {
         <div className="main-wrapper">
             <Navbar />
             {props.children}
+
         </div>
     );
 }
