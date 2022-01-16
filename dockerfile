@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:13.12.0-alpine
 
 # Setting working directory. All the path will be relative to WORKDIR
 WORKDIR /usr/src/app
